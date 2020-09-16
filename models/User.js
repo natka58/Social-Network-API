@@ -3,51 +3,51 @@ require('mongoose-type-email');
 
 const UserSchema = new Schema(
     {
-username: {
-type: String,
-unique: true,
-required: true,
-trim: true
-},
+        username: {
+            type: String,
+            unique: true,
+            required: true,
+            trim: true
+        },
 
-email: {
-type: String,
-unique: true,
-required: true,
-type: mongoose.SchemaTypes.Email
-},
+        email: {
+            type: String,
+            unique: true,
+            required: true,
+            type: mongoose.SchemaTypes.Email
+        },
 
-thoughts: [
-    {
-    type: Schema.Types.ObjectId,
-    ref: 'Thought'
-    }
-],
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought'
+            }
+        ],
 
-friends: [
-    {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
-]
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
     },
     {
         toJSON: {
-          virtuals: true,
-          getters: true
+            virtuals: true,
+            getters: true
         },
         id: false
-      }
-    );
+    }
+);
 
 // get total count of comments and replies on retrieval
-Userchema.virtual('friendCount').get(function() {
+Userchema.virtual('friendCount').get(function () {
     return this.friends.length;
-  });
-  
-   
-    // create the Pizza model using the PizzaSchema
-  const User = model('User', UserSchema);
-  
-  // export the Pizza model
-  module.exports = User;
+});
+
+
+// create the Pizza model using the PizzaSchema
+const User = model('User', UserSchema);
+
+// export the Pizza model
+module.exports = User;
