@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const moment = require('moment');
 require('mongoose-type-email');
 
 const UserSchema = new Schema(
@@ -12,8 +11,8 @@ trim: true
 },
 
 email: {
-    type: String,
-    unique: true,
+type: String,
+unique: true,
 required: true,
 type: mongoose.SchemaTypes.Email
 },
@@ -43,7 +42,7 @@ friends: [
 
 // get total count of comments and replies on retrieval
 Userchema.virtual('friendCount').get(function() {
-    return this.friends.reduce((total, friends) => total + friends.length + 1, 0);
+    return this.friends.length;
   });
   
    

@@ -1,20 +1,66 @@
-thoughtText
+const moment = require('moment');
+const { Schema, model, Types } = require('mongoose');
+// thought schema
+const ThoughtSchema = new Schema(
+    {
+        thoughtText: {
+            type: String,
+            required: true,
+            minlength: 1,
+            maxlength: 280
+        },
 
-String
-Required
-Must be between 1 and 280 characters
-createdAt
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+        },
 
-Date
-Set default value to the current timestamp
-Use moment in a getter method to format the timestamp on query
-username (The user that created this thought)
+        //user that created this thought
+        username: {
+            type: String,
+            required: true
+        },
 
-String
-Required
-reactions (These are like replies)
+        // like replies
+        reactions: [
+            {
+                reactionId: {
+                    type: Schema.Types.ObjectId,
+                    default: () => new Types.ObjectId()
+                },
 
-Array of nested documents created with the reactionSchema
-Schema Settings
+                reactionBody: {
+                    type: String,
+                    required: true,
+                    maxlength: 280
+                },
 
-Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+                username: {
+                    type: String,
+                    required: true
+                },
+
+                createdAt: {
+                    type: Date,
+                    default: Date.now,
+                    get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+                }
+
+            }],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        }
+    });
+
+    // get the total reaction count
+Thoughtchema.virtual('reactionCount').get(function() {
+    return this.reactions.length;
+  });
+  
+  const Thought = model('Thought', ThoughtSchema);
+  
+  module.exports = Thought;
