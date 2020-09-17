@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 require('mongoose-type-email');
 
 const UserSchema = new Schema(
@@ -41,7 +42,7 @@ const UserSchema = new Schema(
 );
 
 // get total count of comments and replies on retrieval
-Userchema.virtual('friendCount').get(function () {
+UserSchema.virtual('friendCount').get(function () {
     return this.friends.length;
 });
 
