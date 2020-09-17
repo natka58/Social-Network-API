@@ -1,25 +1,81 @@
-# Social-Network-API
 
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+  #  Social Network API 
+  
+  
+ ![MIT](https://img.shields.io/badge/license-MIT-yellow.svg) 
+  
+  
+   ## Description
+    An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. 
+    
+  ## Table of Contents
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Demo](#demo)
+  * [Credits](#credits)
+  * [License](#license)
+  * [Contributors](#contributors)
+  * [Tests](#tests)
+  * [Questions](#questions)
+  
+   ## Installation
+     Steps to install the program are: npm init -y npm install
+ 
+   
+  ## Usage
+  Example and instrution of use: This App is to be tested in Insomnia.
 
-Mock-Up
+  
+  ## Demo
+The following animation shows: \
+`GET` for all users \
+`GET` single user by `_id` \
+`POST` adds a new user \
+`PUT` updates a user by its `_id` \
+`DELETE` removes user by its `_id` \
+![Users](public\assets\images\users.gif)
 
-The following animation shows GET routes to return all users and all thoughts being tested in Insomnia Core
+[USER URL](https://drive.google.com/file/d/1LeR1MfaV2Um9X9kbzLipYqqAaGoQSJEI/view)
 
-The following animation shows GET routes to return a single user and a single thought being tested in Insomnia Core
+The following animation shows: \
+`POST` adds a new friend to a user's friend list \
+`DELETE` removes a friend from a user's friend list \
+![Friends](public\assets\images\friends.gif)  
 
-The following animation shows the POST, PUT, and DELETE routes for users being tested in Insomnia Core
+[FRIEND URL](https://drive.google.com/file/d/14evGjoA1LcOFakBd0WTBWmgsWAtK-bs8/view)
 
-In addition to this, your walkthrough video should show the POST, PUT, and DELETE routes for thoughts being tested in Insomnia Core.
+The following animation shows: \
+`GET` all thoughts \
+`GET` single thought by its `_id` \
+`POST` creates a new thought (pushed the created thought's `_id` to the associated user's `thoughts` array field) \
+`PUT` updates a thought by its `_id` \
+`DELETE` removes a thought by its `_id` \
+![Thought](public\assets\images\thought.gif) 
 
-The following animation shows the POST and DELETE routes for a user’s friend list being tested in Insomnia Core
+[THOUGHT URL](https://drive.google.com/file/d/12yLepzmh4nOJvrk5iEGvr6pA9V10BLVs/view) 
 
-In addition to this, your walkthrough video should show the POST and DELETE routes for reactions to thoughts being tested in Insomnia Core
+The following animation shows: \
+`POST` creates a reaction stored in a single thought's `reactions` array field \
+`DELETE` to pull and remove a reaction by the reaction's `reactionId` value \
+![Reaction](public\assets\images\reactions.gif) 
+
+[REACTION URL](https://drive.google.com/file/d/1kjuD8u8sRDfeT7-DACdqZJjkoL9uPWIJ/view)
+
+   ## Credits
+   Program collaborators and third party assets:  No Collaborators used
+  
+  ## License
+    MIT
+  
+  ## Contributors
+   Quidelines to contributors: nonne
+
+  ## Tests
+   To test run the following code: No test 
+  
+    
+  ## Questions
+  
+ GitHub Username: https://github.com/natka58 
+  
+E-mail: lilikoy@sbcglobal.net.
